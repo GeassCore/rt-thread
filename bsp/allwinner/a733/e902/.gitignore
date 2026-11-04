@@ -1,0 +1,6 @@
+/build/
+/.sconsign*
+/rtthread.elf
+/rtthread.bin
+/rtthread.map
+/cconfig.h

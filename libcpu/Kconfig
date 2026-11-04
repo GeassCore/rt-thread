@@ -339,3 +339,10 @@ config ARCH_USING_HW_THREAD_SELF
 config ARCH_USING_IRQ_CTX_LIST
     bool
     default n
+
+config ARCH_RISCV_E902
+    bool
+    select ARCH_RISCV32
+    select RT_USING_CPU_FFS
+    help
+      T-Head E902 RV32E CPU port; 16 integer registers, no FPU or atomic A.

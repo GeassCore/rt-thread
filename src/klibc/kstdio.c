@@ -85,6 +85,7 @@ int rt_vsnprintf(char *buf, size_t size, const char *fmt, va_list args)
 #endif /* RT_KLIBC_USING_LIBC_VSNPRINTF */
 RTM_EXPORT(rt_vsnprintf);
 
+#ifndef RT_KLIBC_USING_NO_VSSCANF
 #ifdef RT_KLIBC_USING_LIBC_VSSCANF
 int rt_vsscanf(const char *buffer, const char *format, va_list ap)
 {
@@ -114,3 +115,5 @@ int rt_sscanf(const char *str, const char *format, ...)
     return rv;
 }
 RTM_EXPORT(rt_sscanf);
+
+#endif /* RT_KLIBC_USING_NO_VSSCANF */

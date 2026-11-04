@@ -1,0 +1,4 @@
+from building import *
+cwd = GetCurrentDir()
+group = DefineGroup('Drivers', ['drv_timer.c'] + (['drv_msgbox.c'] if GetDepend('BSP_USING_MSGBOX') else []), depend=[''], CPPPATH=[cwd, cwd + '/../board'])
+Return('group')

@@ -10,7 +10,7 @@ if not GetDepend(['RT_KLIBC_USING_LIBC_VSNPRINTF']):
     else:
         src += ['rt_vsnprintf_tiny.c']
 
-if not GetDepend(['RT_KLIBC_USING_LIBC_VSSCANF']):
+if not GetDepend(['RT_KLIBC_USING_NO_VSSCANF']) and not GetDepend(['RT_KLIBC_USING_LIBC_VSSCANF']):
     src += ['rt_vsscanf.c']
 
 group = DefineGroup('Libc', src, depend = [''])

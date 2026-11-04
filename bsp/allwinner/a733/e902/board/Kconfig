@@ -1,0 +1,20 @@
+config SOC_A733_E902
+    bool
+    default y
+    select ARCH_RISCV_E902
+    select RT_USING_NANO
+    select RT_USING_COMPONENTS_INIT
+    select RT_USING_USER_MAIN
+
+menu "A733 E902 board options"
+config BSP_USING_LINUX_TELEMETRY
+    bool "Expose execution and fault telemetry in SRAM for the Linux host"
+    default y
+config BSP_USING_MSGBOX
+    bool "CPUS hardware message box polling driver"
+    default y
+config BSP_USING_E902_DEMO
+    bool "Multithread IPC/timer/mailbox example"
+    depends on BSP_USING_LINUX_TELEMETRY && BSP_USING_MSGBOX && RT_USING_MESSAGEQUEUE && RT_USING_TIMER_SOFT
+    default y
+endmenu

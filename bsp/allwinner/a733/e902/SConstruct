@@ -1,0 +1,19 @@
+import os
+import sys
+import rtconfig
+RTT_ROOT = rtconfig.RTT_ROOT
+sys.path.insert(0, os.path.join(RTT_ROOT, 'tools'))
+from building import *
+DefaultEnvironment(tools=[])
+env = Environment(tools=['gcc', 'gnulink', 'ar', 'as'],
+    AS=rtconfig.AS, ASFLAGS=rtconfig.AFLAGS,
+    CC=rtconfig.CC, CCFLAGS=rtconfig.CFLAGS,
+    CXX=rtconfig.CXX, CXXFLAGS=rtconfig.CFLAGS,
+    AR=rtconfig.AR, ARFLAGS='-rc',
+    LINK=rtconfig.LINK, LINKFLAGS=rtconfig.LFLAGS)
+env.PrependENVPath('PATH', rtconfig.EXEC_PATH)
+env['ASCOM'] = env['ASPPCOM']
+env.Append(LIBS=['gcc'])
+Export('RTT_ROOT', 'rtconfig')
+objs = PrepareBuilding(env, RTT_ROOT)
+DoBuilding('rtthread.elf', objs)

@@ -103,8 +103,16 @@ menu "klibc options"
     endmenu # rt_vsnprintf options
 
     menu "rt_vsscanf options"
+        config RT_KLIBC_USING_NO_VSSCANF
+            bool "Omit formatted input functions"
+            default n
+            help
+                Disable rt_sscanf/rt_vsscanf for freestanding profiles that
+                do not provide C library character/number conversion services.
+
         config RT_KLIBC_USING_LIBC_VSSCANF
             bool "Enable rt_vsscanf to use libc vsscanf"
+            depends on !RT_KLIBC_USING_NO_VSSCANF
             default n
     endmenu # rt_vsscanf options
 

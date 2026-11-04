@@ -5,6 +5,10 @@ from building import *
 
 Import('rtconfig')
 
+if rtconfig.CPU == 'e902':
+    group = SConscript(os.path.join('t-head', 'e902', 'SConscript'))
+    Return('group')
+
 common64_arch = ['virt64', 'c906', 'c908','ur-cp100']
 cwd   = GetCurrentDir()
 group = []

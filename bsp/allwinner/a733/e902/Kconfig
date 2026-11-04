@@ -1,0 +1,11 @@
+mainmenu "A733 E902 RT-Thread configuration"
+config BSP_DIR
+    string
+    option env="BSP_DIR"
+    default "."
+config RTT_DIR
+    string
+    option env="RTT_DIR"
+    default "../../../.."
+source "$RTT_DIR/Kconfig"
+source "$BSP_DIR/board/Kconfig"

@@ -1,0 +1,4 @@
+from building import *
+cwd = GetCurrentDir()
+group = DefineGroup('E902', Glob('*.c') + Glob('*_gcc.S'), depend=['ARCH_RISCV_E902'], CPPPATH=[cwd])
+Return('group')

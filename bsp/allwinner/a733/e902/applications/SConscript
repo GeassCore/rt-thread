@@ -1,0 +1,4 @@
+from building import *
+cwd = GetCurrentDir()
+group = DefineGroup('Applications', Glob('*.c'), depend=[''], CPPPATH=[cwd, cwd + '/../board'])
+Return('group')
